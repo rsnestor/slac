@@ -9,7 +9,7 @@
    * Install Verification 
    * AWS Lambdas - Serverless yaml & packaging
    * Deployment 
-   * Command line Options
+   * Command line options
 4. Basic REST Endpoint (CORS) 
    * Multiple Languages (JS, Python, Java)
 5. Database CRUD with DynamoDB
