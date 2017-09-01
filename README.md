@@ -19,3 +19,4 @@
   [Node School](https://nodeschool.io/)  
   [ES6 Compatibility](http://kangax.github.io/compat-table/es6/)  
   [Serverless Quick Start](https://github.com/serverless/serverless#quick-start)  
+  [Serverless Auth/Auth](https://github.com/laardee/serverless-authentication-boilerplate/blob/master/README.md)  
