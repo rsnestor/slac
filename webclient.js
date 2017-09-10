@@ -1,16 +1,14 @@
 const http = require('http');
 
-http.get({
-  hostname: 'localhost',
-  port: 3000,
-  path: '/',
-  agent: false  // create a new agent just for this one request
-}, (res) => {
-  // Do stuff 
-  res.on('data', function (chunk) {
+const url = "http://localhost:3000";
+http.get(url, (res) => {
+  res.setEncoding("utf8");
+  let body = "";
+  res.on("data", data => { body += data; });
+  res.on("end", () => {
     console.log('STATUS: ' + res.statusCode);
     console.log('HEADER: ' + JSON.stringify(res.headers));
     console.log('CONTENT-TYPE: ' + res.headers['content-type']);
-    console.log('BODY: ' + chunk);
+    console.log('BODY: ' + body);
   });
 });

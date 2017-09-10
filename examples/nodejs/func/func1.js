@@ -7,10 +7,12 @@ function execute(someFunction, value) {
    someFunction(value);
 }
  
-execute(say, "Hello");
+say("Hello");
+execute(say, "World!");
 
 //anonymous function
 execute(function(word){ console.log(word) }, "Goodbye");
+//single param fat arrow
 execute(w => { console.log(w) }, "G2"); //single param "fat arrow"
-execute(w => console.log(w), "G3");
-
+//self-executing empty anonymous function 
+(() => console.log("Empty anonymous"))();
