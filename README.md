@@ -22,7 +22,7 @@
   [nodejs.org](https://nodejs.org)  
   [Node School](https://nodeschool.io/)  
   [ES6 Compatibility](http://kangax.github.io/compat-table/es6/)  
-  [*Exploring ES6*](http://exploringjs.com/es6/) 
+  [*Exploring ES6*](http://exploringjs.com/es6/)  
   [Anatomy of an http transaction](https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/) 
   
   [Serverless Quick Start](https://github.com/serverless/serverless#quick-start)  
