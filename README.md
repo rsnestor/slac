@@ -27,4 +27,4 @@
   [Serverless Quick Start](https://github.com/serverless/serverless#quick-start)  
   [Serverless Auth/Auth](https://github.com/laardee/serverless-authentication-boilerplate/blob/master/README.md)  
   [**Ryan Dahl: Original Node.js presentation**](https://youtu.be/ztspvPYybIY)  
-  
+ [What the heck is the event loop?](https://youtu.be/8aGhZQkoFbQ)  
