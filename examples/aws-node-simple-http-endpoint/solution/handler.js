@@ -5,7 +5,7 @@ module.exports.endpoint = (event, context, callback) => {
     statusCode: 200,
     headers: {
       "Access-Control-Allow-Origin" : "*", // enable CORS
-      "Access-Control-Allow-Credentials" : true // cookies an https
+      "Access-Control-Allow-Credentials" : true // cookies and https
     },
     body: JSON.stringify({
       message: `Hello, the current time is ${new Date().toTimeString()}.`,
