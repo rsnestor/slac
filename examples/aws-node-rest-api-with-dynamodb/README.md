@@ -1,17 +1,17 @@
 <!--
 title: AWS Serverless REST API example in NodeJS
-description: This example demonstrates how to setup a RESTful Web Service allowing you to create, list, get, update and delete Todos. DynamoDB is used to store the data. 
+description: This example demonstrates how to setup a RESTful Web Service allowing you to create, list, get, update and delete Loans. DynamoDB is used to store the data.  This README is a shameless copy of the the same in Todos example.
 layout: Doc
 -->
 # Serverless REST API
 
-This example demonstrates how to setup a [RESTful Web Services](https://en.wikipedia.org/wiki/Representational_state_transfer#Applied_to_web_services) allowing you to create, list, get, update and delete Todos. DynamoDB is used to store the data. This is just an example and of course you could use any data storage as a backend.
+This example demonstrates how to setup a [RESTful Web Services](https://en.wikipedia.org/wiki/Representational_state_transfer#Applied_to_web_services) allowing you to create, list, get, update and delete Loans. DynamoDB is used to store the data. This is just an example and of course you could use any data storage as a backend.
 
 ## Structure
 
-This service has a separate directory for all the todo operations. For each operation exactly one file exists e.g. `todos/delete.js`. In each of these files there is exactly one function which is directly attached to `module.exports`.
+This service has a separate directory for all the loan operations. For each operation exactly one file exists e.g. `loans/delete.js`. In each of these files there is exactly one function which is directly attached to `module.exports`.
 
-The idea behind the `todos` directory is that in case you want to create a service containing multiple resources e.g. users, notes, comments you could do so in the same service. While this is certainly possible you might consider creating a separate service for each resource. It depends on the use-case and your preference.
+The idea behind the `loans` directory is that in case you want to create a service containing multiple resources (e.g. loans, borrowers, credit agencies) you could do so in the same service. While this is certainly possible you might consider creating a separate service for each resource. It depends on the use-case and your preference.
 
 ## Use-cases
 
@@ -43,80 +43,80 @@ Serverless: Checking Stack update progress…
 Serverless: Stack update finished…
 
 Service Information
-service: serverless-rest-api-with-dynamodb
+service: slac-rest-api-with-dynamodb
 stage: dev
 region: us-east-1
 api keys:
   None
 endpoints:
-  POST - https://45wf34z5yf.execute-api.us-east-1.amazonaws.com/dev/todos
-  GET - https://45wf34z5yf.execute-api.us-east-1.amazonaws.com/dev/todos
-  GET - https://45wf34z5yf.execute-api.us-east-1.amazonaws.com/dev/todos/{id}
-  PUT - https://45wf34z5yf.execute-api.us-east-1.amazonaws.com/dev/todos/{id}
-  DELETE - https://45wf34z5yf.execute-api.us-east-1.amazonaws.com/dev/todos/{id}
+  POST - https://{XXXXX}.execute-api.us-east-1.amazonaws.com/dev/loans
+  GET - https://{XXXXX}.execute-api.us-east-1.amazonaws.com/dev/loans
+  GET - https://{XXXXX}.execute-api.us-east-1.amazonaws.com/dev/loans/{id}
+  PUT - https://{XXXXX}.execute-api.us-east-1.amazonaws.com/dev/loans/{id}
+  DELETE - https://{XXXXX}.execute-api.us-east-1.amazonaws.com/dev/loans/{id}
 functions:
-  serverless-rest-api-with-dynamodb-dev-update: arn:aws:lambda:us-east-1:488110005556:function:serverless-rest-api-with-dynamodb-dev-update
-  serverless-rest-api-with-dynamodb-dev-get: arn:aws:lambda:us-east-1:488110005556:function:serverless-rest-api-with-dynamodb-dev-get
-  serverless-rest-api-with-dynamodb-dev-list: arn:aws:lambda:us-east-1:488110005556:function:serverless-rest-api-with-dynamodb-dev-list
-  serverless-rest-api-with-dynamodb-dev-create: arn:aws:lambda:us-east-1:488110005556:function:serverless-rest-api-with-dynamodb-dev-create
-  serverless-rest-api-with-dynamodb-dev-delete: arn:aws:lambda:us-east-1:488110005556:function:serverless-rest-api-with-dynamodb-dev-delete
+  slac-rest-api-with-dynamodb-dev-update: arn:aws:lambda:us-east-1:488110005556:function:slac-rest-api-with-dynamodb-dev-update
+  slac-rest-api-with-dynamodb-dev-get: arn:aws:lambda:us-east-1:488110005556:function:slac-rest-api-with-dynamodb-dev-get
+  slac-rest-api-with-dynamodb-dev-list: arn:aws:lambda:us-east-1:488110005556:function:slac-rest-api-with-dynamodb-dev-list
+  slac-rest-api-with-dynamodb-dev-create: arn:aws:lambda:us-east-1:488110005556:function:slac-rest-api-with-dynamodb-dev-create
+  slac-rest-api-with-dynamodb-dev-delete: arn:aws:lambda:us-east-1:488110005556:function:slac-rest-api-with-dynamodb-dev-delete
 ```
 
 ## Usage
 
-You can create, retrieve, update, or delete todos with the following commands:
+You can create, retrieve, update, or delete loans with the following commands:
 
-### Create a Todo
+### Create a Loan
 
 ```bash
-curl -X POST https://XXXXXXX.execute-api.us-east-1.amazonaws.com/dev/todos --data '{ "text": "Learn Serverless" }'
+curl -X POST https://XXXXXXX.execute-api.us-east-1.amazonaws.com/dev/loans --data '{"loan": {"upb": 250000, "amort": "FRM", "term": 30 }}'
 ```
 
 Example Result:
 ```bash
-{"text":"Learn Serverless","id":"ee6490d0-aa81-11e6-9ede-afdfa051af86","createdAt":1479138570824,"checked":false,"updatedAt":1479138570824}%
+{"id":"5d487440-9829-11e7-84d6-ed21e36d83cc","upb":250000,"amort":"FRM","term":30,"delinquent":false,"createdAt":1505268908420,"updatedAt":1505268908420}
 ```
 
-### List all Todos
+### List all Loans
 
 ```bash
-curl https://XXXXXXX.execute-api.us-east-1.amazonaws.com/dev/todos
+curl https://XXXXXXX.execute-api.us-east-1.amazonaws.com/dev/loans
 ```
 
 Example output:
 ```bash
-[{"text":"Deploy my first service","id":"ac90fe80-aa83-11e6-9ede-afdfa051af86","checked":true,"updatedAt":1479139961304},{"text":"Learn Serverless","id":"20679390-aa85-11e6-9ede-afdfa051af86","createdAt":1479139943241,"checked":false,"updatedAt":1479139943241}]%
+[{"upb":350000,"updatedAt":1505268967242,"createdAt":1505268967242,"term":"5/1","amort":"ARM","id":"8057faa0-9829-11e7-84d6-ed21e36d83cc","delinquent":false},{"upb":250000,"updatedAt":1505268908420,"createdAt":1505268908420,"term":30,"amort":"FRM","id":"5d487440-9829-11e7-84d6-ed21e36d83cc","delinquent":false}]
 ```
 
-### Get one Todo
+### Get one Loan
 
 ```bash
-# Replace the <id> part with a real id from your todos table
-curl https://XXXXXXX.execute-api.us-east-1.amazonaws.com/dev/todos/<id>
-```
-
-Example Result:
-```bash
-{"text":"Learn Serverless","id":"ee6490d0-aa81-11e6-9ede-afdfa051af86","createdAt":1479138570824,"checked":false,"updatedAt":1479138570824}%
-```
-
-### Update a Todo
-
-```bash
-# Replace the <id> part with a real id from your todos table
-curl -X PUT https://XXXXXXX.execute-api.us-east-1.amazonaws.com/dev/todos/<id> --data '{ "text": "Learn Serverless", "checked": true }'
+# Replace the <id> part with a real id from your loans table
+curl https://XXXXXXX.execute-api.us-east-1.amazonaws.com/dev/loans/<id>
 ```
 
 Example Result:
 ```bash
-{"text":"Learn Serverless","id":"ee6490d0-aa81-11e6-9ede-afdfa051af86","createdAt":1479138570824,"checked":true,"updatedAt":1479138570824}%
+{"upb":250000,"updatedAt":1505268908420,"createdAt":1505268908420,"term":30,"amort":"FRM","id":"5d487440-9829-11e7-84d6-ed21e36d83cc","delinquent":false}
 ```
 
-### Delete a Todo
+### Update a Loan *[TODO]*
 
 ```bash
-# Replace the <id> part with a real id from your todos table
-curl -X DELETE https://XXXXXXX.execute-api.us-east-1.amazonaws.com/dev/todos/<id>
+# Replace the <id> part with a real id from your loans table
+curl -X PUT https://XXXXXXX.execute-api.us-east-1.amazonaws.com/dev/loans/<id> --data '{"loan": {"upb": 250000, "amort": "FRM", "term": 30, "delinquent": true }}'
+```
+
+Example Result:
+```bash
+{"id":"5d487440-9829-11e7-84d6-ed21e36d83cc","upb":250000,"amort":"FRM","term":30,"delinquent":true,"createdAt":1505268908420,"updatedAt":1505270636953}
+```
+
+### Delete a Loan
+
+```bash
+# Replace the <id> part with a real id from your loans table
+curl -X DELETE https://XXXXXXX.execute-api.us-east-1.amazonaws.com/dev/loans/<id>
 ```
 
 No output

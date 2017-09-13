@@ -48,7 +48,7 @@ In `serverless.yml` the log-function is configured to receive any event from the
 
 ![iot-console-test](https://cloud.githubusercontent.com/assets/223045/21593597/352be866-d119-11e6-9639-994b9c495571.png)
 
-There fill `mybutton` into the topic input field in the publish section. Replace existing example data with the following example and press the publish button.
+There fill `slac_topic` into the topic input field in the publish section. Replace existing example data with the following example and press the publish button.
 
 ```json
 {

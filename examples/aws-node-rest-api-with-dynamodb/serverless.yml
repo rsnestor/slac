@@ -1,4 +1,4 @@
-service: serverless-rest-api-with-dynamodb
+service: slac-rest-api-with-dynamodb
 
 frameworkVersion: ">=1.1.0 <2.0.0"
 
@@ -20,50 +20,51 @@ provider:
 
 functions:
   create:
-    handler: addr/create.create
+    handler: loans/create.create
     events:
       - http:
-          path: addr
+          path: loans
           method: post
           cors: true
 
   list:
-    handler: addr/list.list
+    handler: loans/list.list
     events:
       - http:
-          path: addr
+          path: loans
           method: get
           cors: true
 
   get:
-    handler: addr/get.get
+    handler: loans/get.get
     events:
       - http:
-          path: addr/{id}
+          path: loans/{id}
           method: get
           cors: true
 
 # update:
-#   handler: addr/update.update
+#   handler: loans/update.update
 #   events:
 #     - http:
-#         path: addr/{id}
+#         path: loans/{id}
 #         method: put
 #         cors: true
 
   delete:
-    handler: addr/delete.delete
+    handler: loans/delete.delete
     events:
       - http:
-          path: addr/{id}
+          path: loans/{id}
           method: delete
           cors: true
 
+#Cloud Formation resource definition
 resources:
   Resources:
-    TodosDynamoDbTable:
+    LoansDynamoDbTable:
       Type: 'AWS::DynamoDB::Table'
-      DeletionPolicy: Retain
+      DeletionPolicy: Delete
       Properties:
         AttributeDefinitions:
           -
